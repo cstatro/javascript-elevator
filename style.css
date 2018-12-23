@@ -1,0 +1,55 @@
+h1 {
+  color: blue;
+  text-align: center;
+  background: gray;
+  font-size:28pt;
+}
+#side {
+	background:#b36b00;
+	height:500px;
+	width:200px;
+	display:inline-block;
+	position:absolute;
+	left:10px;
+}
+#main{
+	background-color:black;
+	height:500px;
+	width:500px;
+	display:inline-block;
+	position:absolute;
+	left:300px;
+}
+#elevator{
+	background-color:brown;
+	height:83px;
+	width:50px;
+	position:absolute;
+	left:220px;
+	top:417px;
+	
+	
+}
+
+.building{
+	background-color:brown;
+	height:500px;
+	width:2px;
+	position:absolute;
+	left:245px;
+}
+	
+input {
+	border-radius:50%;
+	background-color:white;
+	display:inline-block;
+	
+}
+.floors {
+	background-color: brown;
+	position:absolute;
+	left:245px;
+	width:255px;
+
+
+}
