@@ -120,6 +120,7 @@ function attachListeners(){
 		
 		target.addEventListener('click', function push(){
 			let selectedFL = allFloors[target.value-1]
+			console.log('floor sent '+ target.value)
 			var checkArray = floorQ.filter(obj =>{
 				return obj === selectedFL;
 			})
@@ -140,7 +141,7 @@ function turnButtonWhite(){
 	let allButtons = document.querySelectorAll('input')
 	let floorNum = (floorQ[0].floor)
 	let targetButton = document.getElementById(`${floorNum}`)
-	console.log(targetButton+'test target')
+	console.log(targetButton.value+' floor processed')
 	targetButton.style.backgroundColor ='white'
 }
 
