@@ -13,7 +13,7 @@ function drawLines(){
 			floorLine.style.height = '1px'
 			floorLine.style.backgroundColor = 'brown'
 			floorLine.style.top = `${floorMeasurements[i]}px`
-			floorLine.id = i
+			floorLine.id = `${i}f`
 			MAIN.append(floorLine)
 	}
 }

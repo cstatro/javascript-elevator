@@ -20,6 +20,7 @@ function moveElevatorUp(){
 		window.requestAnimationFrame(animateElevator);
 		}
 		else{
+			turnButtonWhite()
 			ting();
 			floorQ.shift()
 			return setTimeout(processQ,1000)
@@ -35,6 +36,7 @@ function moveElevatorDown(){
 		window.requestAnimationFrame(animateElevator);
 		}
 		else{
+			turnButtonWhite()
 			ting()
 			floorQ.shift()
 			return setTimeout(processQ,1000)
@@ -130,9 +132,15 @@ function attachListeners(){
 			}	
 		})
 		
-
-
 	} 
 }
 attachListeners();
+
+function turnButtonWhite(){
+	let allButtons = document.querySelectorAll('input')
+	let floorNum = (floorQ[0].floor)
+	let targetButton = document.getElementById(`${floorNum}`)
+	console.log(targetButton+'test target')
+	targetButton.style.backgroundColor ='white'
+}
 
