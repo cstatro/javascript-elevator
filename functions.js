@@ -22,6 +22,7 @@ function moveElevatorUp(){
 		}
 		else{
 			turnButtonWhite()
+			floorQValues()
 			ting();
 			floorQ.shift()
 			return setTimeout(processQ,1000)
@@ -38,6 +39,7 @@ function moveElevatorDown(){
 		}
 		else{
 			turnButtonWhite()
+			floorQValues()
 			ting()
 			floorQ.shift()
 			return setTimeout(processQ,1000)
