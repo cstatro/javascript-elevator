@@ -71,7 +71,7 @@ function findPlace(val){
 	else if (lastFloor < firstFloor && newFloor > firstFloor ){
 		
 		floorQ.splice(edgeCase, 0, val)
-		console.log('case 2 '+val.floor)
+		console.log(floorQ +' Splicing for '+val.floor)
 	}
 	else if (lastFloor < newFloor){
 		floorQ.push(val)
