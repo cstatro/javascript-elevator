@@ -125,6 +125,7 @@ function attachListeners(){
 				return console.log('Error: Floor has been called')
 			}
 			else{
+				target.style.backgroundColor = 'yellow'
 				addToQ(selectedFL)
 			}	
 		})
