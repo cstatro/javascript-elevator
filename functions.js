@@ -118,8 +118,15 @@ function attachListeners(){
 		
 		target.addEventListener('click', function push(){
 			let selectedFL = allFloors[target.value-1]
-			console.log(selectedFL)
-			addToQ(selectedFL)
+			var checkArray = floorQ.filter(obj =>{
+				return obj === selectedFL;
+			})
+			if (checkArray.length != 0){
+				return console.log('Error: Floor has been called')
+			}
+			else{
+				addToQ(selectedFL)
+			}	
 		})
 		
 
