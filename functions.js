@@ -12,6 +12,7 @@ const allFloors = [levelOne,levelTwo,levelThree,levelFour,levelFive,levelSix]
 let floorQ = [];
 
 
+
 function moveElevatorUp(){
 	function animateElevator(){
 		if (ePos != floorQ[0].pHeight){
@@ -20,6 +21,8 @@ function moveElevatorUp(){
 		window.requestAnimationFrame(animateElevator);
 		}
 		else{
+			turnButtonWhite()
+			floorQValues()
 			ting();
 			floorQ.shift()
 			return setTimeout(processQ,1000)
@@ -35,6 +38,8 @@ function moveElevatorDown(){
 		window.requestAnimationFrame(animateElevator);
 		}
 		else{
+			turnButtonWhite()
+			floorQValues()
 			ting()
 			floorQ.shift()
 			return setTimeout(processQ,1000)
@@ -66,16 +71,16 @@ function findPlace(val){
 	
 	if (lastFloor > firstFloor && newFloor < lastFloor){
 		floorQ.push(val);
-		console.log('case 1 '+ val.floor)
+		//console.log('case 1 '+ val.floor)
 	}
 	else if (lastFloor < firstFloor && newFloor > firstFloor ){
 		
 		floorQ.splice(edgeCase, 0, val)
-		console.log(floorQ +' Splicing for '+val.floor)
+		//console.log(floorQ +' Splicing for '+val.floor)
 	}
 	else if (lastFloor < newFloor){
 		floorQ.push(val)
-		console.log('case 3 '+ val.floor)
+		//console.log('case 3 '+ val.floor)
 	}	
 }
 
@@ -98,7 +103,7 @@ function addToQ(val){
 }
 function processQ(){
 	if(floorQ.length === 0){
-		return 
+		return console.log('EMPTY')
 	}
 	else if (ePos > floorQ[0].pHeight){
 		console.log('processing case up')
@@ -118,6 +123,7 @@ function attachListeners(){
 		
 		target.addEventListener('click', function push(){
 			let selectedFL = allFloors[target.value-1]
+			console.log('floor sent '+ target.value)
 			var checkArray = floorQ.filter(obj =>{
 				return obj === selectedFL;
 			})
@@ -125,13 +131,20 @@ function attachListeners(){
 				return console.log('Error: Floor has been called')
 			}
 			else{
+				target.style.backgroundColor = 'yellow'
 				addToQ(selectedFL)
 			}	
 		})
 		
-
-
 	} 
 }
 attachListeners();
+
+function turnButtonWhite(){
+	let allButtons = document.querySelectorAll('input')
+	let floorNum = (floorQ[0].floor)
+	let targetButton = document.getElementById(`${floorNum}`)
+	console.log(targetButton.value+' floor processed')
+	targetButton.style.backgroundColor ='white'
+}
 

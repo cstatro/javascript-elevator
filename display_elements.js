@@ -13,7 +13,7 @@ function drawLines(){
 			floorLine.style.height = '1px'
 			floorLine.style.backgroundColor = 'brown'
 			floorLine.style.top = `${floorMeasurements[i]}px`
-			floorLine.id = i
+			floorLine.id = `${i}f`
 			MAIN.append(floorLine)
 	}
 }
@@ -22,4 +22,12 @@ drawLines();
 function ting(){
 	var ding = new Audio('ding.mp3')
 	ding.play();
+}
+
+function floorQValues(){
+	let arrayOfVals = []
+	for (var i = 0; i < floorQ.length; i++){
+		arrayOfVals.push(floorQ[i].floor)
+	}
+	return console.log(`the current Q is ${arrayOfVals}`)
 }
