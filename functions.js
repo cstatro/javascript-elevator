@@ -70,16 +70,16 @@ function findPlace(val){
 
 	
 	if (lastFloor > firstFloor && newFloor < lastFloor){
-		floorQ.push(val);
+		return floorQ.push(val);
 		//console.log('case 1 '+ val.floor)
 	}
 	else if (lastFloor < firstFloor && newFloor > firstFloor ){
 		
-		floorQ.splice(edgeCase, 0, val)
+		 return floorQ.splice(edgeCase, 0, val)
 		//console.log(floorQ +' Splicing for '+val.floor)
 	}
 	else if (lastFloor < newFloor){
-		floorQ.push(val)
+		return floorQ.push(val)
 		//console.log('case 3 '+ val.floor)
 	}	
 }
@@ -93,10 +93,8 @@ function addToQ(val){
 	}
 	else if(floorQ.length === 1){
 		console.log('simple push no process')
-		floorQ.push(val)
+		 return floorQ.push(val)
 	}
-	
-	
 	else
 		console.log('inserting with a find plc')
 		return findPlace(val)	
