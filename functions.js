@@ -98,8 +98,8 @@ function addToQ(val){
 		return	processQ()
 	}
 	else if(floorQ.length === 1){
-		//console.log('simple push no process')
-		 return floorQ.push(val)
+		console.log('simple push no process')
+		return floorQ.push(val)
 	}
 	else
 		console.log('inserting with a find plc')
