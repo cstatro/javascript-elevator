@@ -107,15 +107,15 @@ function addToQ(val){
 }
 function processQ(){
 	if(floorQ.length === 0){
-		
+		ELEVATOR.direction = 'stop'
 		return console.log('EMPTY')
 	}
 	else if (ePos > floorQ[0].pHeight){
-		//console.log('processing case up')
+		ELEVATOR.direction = 'up'
 		moveElevatorUp();
 	}
 	else if(ePos < floorQ[0].pHeight){
-		//console.log('processing case down')
+		ELEVATOR.direction = 'down'
 		moveElevatorDown();
 	}
 }
