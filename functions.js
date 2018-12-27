@@ -6,6 +6,7 @@ const levelFour = new Object ({floor:4, pHeight:166})
 const levelFive = new Object ({floor:5, pHeight:83})
 const levelSix = new Object ({floor:6, pHeight:0})
 let ELEVATOR = document.querySelector('#elevator');
+ELEVATOR.direction = 'stop'
 ELEVATOR.style.top = getComputedStyle(ELEVATOR).top
 let ePos = parseInt(ELEVATOR.style.top);
 const allFloors = [levelOne,levelTwo,levelThree,levelFour,levelFive,levelSix]
@@ -106,6 +107,7 @@ function addToQ(val){
 }
 function processQ(){
 	if(floorQ.length === 0){
+		
 		return console.log('EMPTY')
 	}
 	else if (ePos > floorQ[0].pHeight){
