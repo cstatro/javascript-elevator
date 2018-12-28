@@ -33,3 +33,23 @@ function secondPressDown(val){
     }
 }
 
+// solving elevator is at 3  , Q is [5,6] 4 is called, then one quickly after. So Q should be [4,5,6]. if 2 [5,6,2]
+function calledUp(val){
+    let destination = val.pHeight;
+    if (ePos > destination && val.floor < floorQ[0].floor){ 
+        return floorQ.unshift(val)
+    }
+    else{
+        return floorQ.push(val)
+    }
+}
+
+function calledDown(val){
+    let destination = val.pHeight;
+    if (ePos < destination && val.floor > floorQ[0].floor){ 
+        return floorQ.unshift(val)
+    }
+    else{
+        return floorQ.push(val)
+    }
+}

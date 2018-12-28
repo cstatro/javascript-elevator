@@ -85,11 +85,16 @@ function addToQ(val){
 	else if(floorQ.length === 1 && ELEVATOR.direction === 'up'){
 		return secondPressUp(val)
 	}
-	else if(floorQ.length === 1 && ELEVATOR.direction === 'down')
+	else if(floorQ.length === 1 && ELEVATOR.direction === 'down'){
 		return secondPressDown(val)
-	else
+	}
+	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'up'){
 		console.log('inserting with a find plc')
-		return findPlace(val)	
+		return calledUp(val)
+	}
+	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'down'){
+		return calledDown(val)
+	}
 }
 function processQ(){
 	if(floorQ.length === 0){
