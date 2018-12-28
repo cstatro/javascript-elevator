@@ -72,7 +72,7 @@ function findPlace(val){
 	
 	else {
 		return floorQ.push(val)
-		//console.log('case 3 '+ val.floor)
+		
 	}	
 }
 
@@ -82,10 +82,11 @@ function addToQ(val){
 		floorQ.push(val)
 		return	processQ()
 	}
-	else if(floorQ.length === 1){
-		console.log('simple push no process')
-		return floorQ.push(val)
+	else if(floorQ.length === 1 && ELEVATOR.direction === 'up'){
+		return secondPressUp(val)
 	}
+	else if(floorQ.length === 1 && ELEVATOR.direction === 'down')
+		return secondPressDown(val)
 	else
 		console.log('inserting with a find plc')
 		return findPlace(val)	
