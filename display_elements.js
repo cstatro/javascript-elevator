@@ -31,3 +31,11 @@ function floorQValues(){
 	}
 	return console.log(`the current Q is ${arrayOfVals}`)
 }
+
+function turnButtonWhite(){
+	let allButtons = document.querySelectorAll('input')
+	let floorNum = (floorQ[0].floor)
+	let targetButton = document.getElementById(`${floorNum}`)
+	console.log(targetButton.value+' floor processed')
+	targetButton.style.backgroundColor ='white'
+}

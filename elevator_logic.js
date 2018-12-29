@@ -53,7 +53,6 @@ function calledDown(val,Q){
     }
 }
 
-
 function splicingUp(val){
     let lastFloor = floorQ[floorQ.length-1].floor;
     let floorNum = val.floor
@@ -65,7 +64,6 @@ function splicingUp(val){
         }
     }
 }
-
 function splicingDown(val){
     let lastFloor = floorQ[floorQ.length-1].floor;
     let floorNum = val.floor
@@ -77,7 +75,6 @@ function splicingDown(val){
         }
     }
 }
-
 function prepDown(val){
     let floorNum = val.floor
     for (var i = floorQ.length-1; i > 0;i--){
@@ -86,7 +83,6 @@ function prepDown(val){
         }
     }
 }
-
 function prepUp(val){
     let floorNum = val.floor
     for (var i = floorQ.length-1; i > 0;i--){

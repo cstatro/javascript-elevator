@@ -12,9 +12,6 @@ let ePos = parseInt(ELEVATOR.style.top);
 const allFloors = [levelOne,levelTwo,levelThree,levelFour,levelFive,levelSix]
 let floorQ = [];
 
-
-
-
 function moveElevatorUp(){
 	function animateElevator(){
 		if (ePos != floorQ[0].pHeight){
@@ -50,8 +47,6 @@ function moveElevatorDown(){
 	window.requestAnimationFrame(animateElevator);
 }
 
-
-
 function addToQ(val){
 	if(floorQ.length === 0){
 		floorQ.push(val)
@@ -86,7 +81,6 @@ function processQ(){
 		moveElevatorDown();
 	}
 }
-
 function attachListeners(){
 	let allButtons = document.querySelectorAll('input')
 	for (var i = 0; i < allButtons.length;i++){
@@ -111,12 +105,3 @@ function attachListeners(){
 	} 
 }
 attachListeners();
-
-function turnButtonWhite(){
-	let allButtons = document.querySelectorAll('input')
-	let floorNum = (floorQ[0].floor)
-	let targetButton = document.getElementById(`${floorNum}`)
-	console.log(targetButton.value+' floor processed')
-	targetButton.style.backgroundColor ='white'
-}
-
