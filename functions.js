@@ -11,7 +11,8 @@ ELEVATOR.style.top = getComputedStyle(ELEVATOR).top
 let ePos = parseInt(ELEVATOR.style.top);
 const allFloors = [levelOne,levelTwo,levelThree,levelFour,levelFive,levelSix]
 let floorQ = [];
-let lastStop = ''
+
+
 
 
 function moveElevatorUp(){
@@ -23,8 +24,6 @@ function moveElevatorUp(){
 		}
 		else{
 			turnButtonWhite()
-			lastStop = floorQ[0].floor
-			//console.log(lastStop)
 			floorQValues()
 			ting();
 			floorQ.shift()
@@ -42,8 +41,6 @@ function moveElevatorDown(){
 		}
 		else{
 			turnButtonWhite()
-			lastStop = floorQ[0].floor
-			//console.log(lastStop + ' is the last stop') 
 			floorQValues()
 			ting()
 			floorQ.shift()
@@ -55,55 +52,24 @@ function moveElevatorDown(){
 
 
 
-//these functions facilitate inserting floor requests into the middle of the floorQ array
-//use case ascending
-function findSplice(val){
-	for(var i = val.length -1;i > 0;i--){
-		let crrnt = parseInt(val[i].floor)
-		let nxt = parseInt(val[i-1].floor)
-		if (crrnt < nxt){
-			return i
-		}
-	}
-}
-
-
-
-
-//calling it early because stack limit was exceeding 6 4 3
-
-
-function findPlace(val){
-	let lastFloor = floorQ[floorQ.length-1].floor;
-	let firstFloor = floorQ[0].floor;
-	let newFloor = val.floor;
-	let ascendingSplice = findSplice(floorQ)
-
-	if (lastFloor < firstFloor && newFloor > firstFloor || newFloor > lastFloor && newFloor < firstFloor){
-		 console.log(`Ascending splice in ${val.floor} at ${ascendingSplice}`)
-		 return floorQ.splice(ascendingSplice, 0, val)
-		//console.log(floorQ +' Splicing for '+val.floor)
-	}
-	
-	else {
-		return floorQ.push(val)
-		//console.log('case 3 '+ val.floor)
-	}	
-}
-
-
 function addToQ(val){
 	if(floorQ.length === 0){
 		floorQ.push(val)
 		return	processQ()
 	}
-	else if(floorQ.length === 1){
-		//console.log('simple push no process')
-		 return floorQ.push(val)
+	else if(floorQ.length === 1 && ELEVATOR.direction === 'up'){
+		return secondPressUp(val)
 	}
-	else
-		console.log('inserting with a find plc')
-		return findPlace(val)	
+	else if(floorQ.length === 1 && ELEVATOR.direction === 'down'){
+		return secondPressDown(val)
+	}
+	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'up'){
+		console.log('called up')
+		return calledUp(val,floorQ)
+	}
+	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'down'){
+		return calledDown(val,floorQ)
+	}
 }
 function processQ(){
 	if(floorQ.length === 0){
@@ -112,6 +78,7 @@ function processQ(){
 	}
 	else if (ePos > floorQ[0].pHeight){
 		ELEVATOR.direction = 'up'
+		console.log(ELEVATOR.direction)
 		moveElevatorUp();
 	}
 	else if(ePos < floorQ[0].pHeight){
