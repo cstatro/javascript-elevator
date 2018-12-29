@@ -1,5 +1,7 @@
 
 
+
+
 function findSplice(val){
 	for(var i = val.length -1;i > 0;i--){
 		let crrnt = parseInt(val[i].floor)
@@ -34,12 +36,19 @@ function secondPressDown(val){
 }
 
 // solving elevator is at 3  , Q is [5,6] 4 is called, then one quickly after. So Q should be [4,5,6]. if 2 [5,6,2]
-function calledUp(val){
+// solve for elevator at 1 call 3,6,5,4, resolve 3,4,5,6
+function calledUp(val,Q){
     let destination = val.pHeight;
+    let endOfQ = Q.length-1
     if (ePos > destination && val.floor < floorQ[0].floor){ 
         return floorQ.unshift(val)
     }
-    else{
+    else if(ePos > destination && val.floor > floorQ[0].floor &&  val.floor < floorQ[endOfQ].floor){
+        console.log('splicingup')
+        return splicingUp(val)
+    }
+    else {
+        console.log('called up push')
         return floorQ.push(val)
     }
 }
@@ -51,5 +60,18 @@ function calledDown(val){
     }
     else{
         return floorQ.push(val)
+    }
+}
+
+
+function splicingUp(val){
+    let lastFloor = floorQ[floorQ.length-1].floor;
+    let floorNum = val.floor
+    console.log(floorNum)
+    console.log('floornum above')
+    for (var i = 0; i < floorQ.length;i++){
+        if (floorQ[i].floor > floorNum){
+        return floorQ.splice(i, 0, val)
+        }
     }
 }

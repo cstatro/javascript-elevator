@@ -14,6 +14,7 @@ let floorQ = [];
 let lastStop = ''
 
 
+
 function moveElevatorUp(){
 	function animateElevator(){
 		if (ePos != floorQ[0].pHeight){
@@ -89,8 +90,8 @@ function addToQ(val){
 		return secondPressDown(val)
 	}
 	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'up'){
-		console.log('inserting with a find plc')
-		return calledUp(val)
+		console.log('called up')
+		return calledUp(val,floorQ)
 	}
 	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'down'){
 		return calledDown(val)
