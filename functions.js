@@ -56,28 +56,6 @@ function moveElevatorDown(){
 
 
 
-
-
-
-function findPlace(val){
-	let lastFloor = floorQ[floorQ.length-1].floor;
-	let firstFloor = floorQ[0].floor;
-	let newFloor = val.floor;
-	let ascendingSplice = findSplice(floorQ)
-
-	if (lastFloor < firstFloor && newFloor > firstFloor || newFloor > lastFloor && newFloor < firstFloor){
-		 console.log(`Ascending splice in ${val.floor} at ${ascendingSplice}`)
-		 return floorQ.splice(ascendingSplice, 0, val)
-		//console.log(floorQ +' Splicing for '+val.floor)
-	}
-	
-	else {
-		return floorQ.push(val)
-		
-	}	
-}
-
-
 function addToQ(val){
 	if(floorQ.length === 0){
 		floorQ.push(val)
@@ -94,7 +72,7 @@ function addToQ(val){
 		return calledUp(val,floorQ)
 	}
 	else if ( floorQ.length >= 2 && ELEVATOR.direction === 'down'){
-		return calledDown(val)
+		return calledDown(val,floorQ)
 	}
 }
 function processQ(){
