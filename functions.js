@@ -11,7 +11,7 @@ ELEVATOR.style.top = getComputedStyle(ELEVATOR).top
 let ePos = parseInt(ELEVATOR.style.top);
 const allFloors = [levelOne,levelTwo,levelThree,levelFour,levelFive,levelSix]
 let floorQ = [];
-let lastStop = ''
+
 
 
 
@@ -24,8 +24,6 @@ function moveElevatorUp(){
 		}
 		else{
 			turnButtonWhite()
-			lastStop = floorQ[0].floor
-			//console.log(lastStop)
 			floorQValues()
 			ting();
 			floorQ.shift()
@@ -43,8 +41,6 @@ function moveElevatorDown(){
 		}
 		else{
 			turnButtonWhite()
-			lastStop = floorQ[0].floor
-			//console.log(lastStop + ' is the last stop') 
 			floorQValues()
 			ting()
 			floorQ.shift()
